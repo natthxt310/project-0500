@@ -1,4 +1,4 @@
-﻿/**
+/**
  * pages-dh.js - DH Role Screens (58 Screens)
  */
 
@@ -492,18 +492,66 @@ const PagesDH = {
   `, 'สรุปสถานะองค์กร', 'gap'),
 
   'dh-30': () => UI.renderLayout(`
-    <div class="card">
-      <h3 class="card-title mb-4">รายละเอียด: ส่วนที่ขาด</h3>
-      <p>ขาด นักพัฒนาระบบสารสนเทศ 1 อัตรา และ SA ครึ่งอัตรา (อาจใช้ จ้างเหมาหรือสัญญาจ้าง)</p>
-      <button class="btn btn-outline mt-4" onclick="Router.goBack()">กลับ</button>
+    <div class="card" style="border-top:4px solid var(--danger); max-width: 800px;">
+      <div class="card-header">
+        <h3 class="card-title text-danger"><i class="ph-fill ph-warning-circle"></i> รายละเอียดอัตรากำลังที่ขาด (Shortage)</h3>
+        <button class="btn btn-outline" onclick="Router.goBack()">กลับ</button>
+      </div>
+      <div style="background:#fef2f2; padding:15px; border-radius:6px; margin-bottom:20px; color: #991b1b;">
+        <strong>ผลการวิเคราะห์ส่วนต่าง (Gap Analysis):</strong> ขาดแคลนบุคลากรสาย IT รวม 1.5 อัตรา เพื่อให้สอดคล้องกับภาระงานจริง
+      </div>
+      <table style="width:100%; text-align:left; border-collapse:collapse;">
+        <tr style="background:#f8fafc;">
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">ตำแหน่งที่ต้องการเพิ่ม</th>
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">จำนวนที่ขาด (อัตรา)</th>
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">แนวทางแก้ไขที่แนะนำ</th>
+        </tr>
+        <tr>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; font-weight:bold;">นักพัฒนาระบบสารสนเทศ</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; color:var(--danger); font-weight:bold;">1.0</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0;">ขอเปิดสรรหาบุคลากรใหม่ประจำ (Full-time)</td>
+        </tr>
+        <tr>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; font-weight:bold;">นักวิเคราะห์ระบบ (SA)</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; color:var(--danger); font-weight:bold;">0.5</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0;">จ้างเหมาบริการ / สัญญาจ้างชั่วคราว (Part-time)</td>
+        </tr>
+      </table>
+      <div class="mt-4 flex gap-2">
+        <button class="btn btn-primary" onclick="Router.navigate('dh-62')">สร้างคำขออัตรากำลังเพิ่ม (ไปยัง P7)</button>
+      </div>
     </div>
   `, 'รายละเอียดส่วนที่ขาด', 'gap'),
 
   'dh-31': () => UI.renderLayout(`
-    <div class="card" style="border-top:4px solid var(--success)">
-      <h3 class="card-title mb-4 text-success">สถานะตัวอย่าง: บุคลากรเกิน</h3>
-      <p>หากคำนวณแล้ว อัตรากำลังเต็มเวลา (1.5) < คนที่มีอยู่ (3) สถานะจะกลายเป็น "เกินอัตรากำลัง"</p>
-      <button class="btn btn-outline mt-4" onclick="Router.goBack()">กลับ</button>
+    <div class="card" style="border-top:4px solid var(--success); max-width: 800px;">
+      <div class="card-header">
+        <h3 class="card-title text-success"><i class="ph-fill ph-users-three"></i> กรณีศึกษา: บุคลากรเกินอัตรา (Surplus)</h3>
+        <button class="btn btn-outline" onclick="Router.goBack()">กลับ</button>
+      </div>
+      <div style="background:#f0fdf4; padding:15px; border-radius:6px; margin-bottom:20px; color: #166534;">
+        <strong>ผลการวิเคราะห์ส่วนต่าง (Gap Analysis):</strong> หากคำนวณแล้ว ภาระงานจริง (FTE = 1.5) น้อยกว่า บุคลากรที่มีอยู่ (3 คน) สถานะจะถือว่า "เกินอัตรากำลัง"
+      </div>
+      <table style="width:100%; text-align:left; border-collapse:collapse;">
+        <tr style="background:#f8fafc;">
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">กลุ่มงาน / ตำแหน่ง</th>
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">อัตราที่มีอยู่</th>
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">ภาระงานจริง (FTE)</th>
+          <th style="padding:12px; border-bottom:2px solid #cbd5e1;">ส่วนเกิน</th>
+        </tr>
+        <tr>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0;">นักวิชาการคอมพิวเตอร์</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; text-align:center;">3</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; text-align:center;">1.5</td>
+          <td style="padding:12px; border-bottom:1px solid #e2e8f0; color:var(--success); font-weight:bold; text-align:center;">+ 1.5</td>
+        </tr>
+      </table>
+      <div class="ai-box mt-4">
+        <i class="ph-fill ph-lightbulb ai-box-icon"></i>
+        <div>
+          <strong>ข้อเสนอแนะเชิงบริหาร:</strong> ควรพิจารณาเกลี่ยอัตรากำลัง (Re-deployment) ไปยังหน่วยงานอื่นที่ขาดแคลน หรือมอบหมายภารกิจโครงการใหม่เพื่อเพิ่มประสิทธิภาพการทำงานสูงสุด
+        </div>
+      </div>
     </div>
   `, 'ตัวอย่างส่วนที่เกิน', 'gap'),
 
@@ -767,9 +815,50 @@ const PagesDH = {
   `, 'รวบรวมแผน', 'unit-plan'),
 
   'dh-47': () => UI.renderLayout(`
-    <div class="card">
-      <div class="card-header"><h3 class="card-title">เปรียบเทียบแผน vs นโยบายองค์กร</h3><button class="btn btn-outline" onclick="Router.goBack()">กลับ</button></div>
-      <p class="text-success"><i class="ph-fill ph-check"></i> การขอคนไอทีเพิ่มสอดคล้องกับนโยบาย การเปลี่ยนแปลงสู่ดิจิทัล ของมหาวิทยาลัย มีโอกาสได้รับอนุมัติสูง</p>
+    <div class="card" style="max-width:900px;">
+      <div class="card-header">
+        <h3 class="card-title">เปรียบเทียบแผน vs นโยบายองค์กร (มหาวิทยาลัย)</h3>
+        <button class="btn btn-outline" onclick="Router.goBack()"><i class="ph ph-arrow-left"></i> กลับ</button>
+      </div>
+      
+      <div class="ai-box ai-box-success" style="margin-bottom: 20px;">
+        <i class="ph-fill ph-check-circle ai-box-icon"></i>
+        <div>
+          <strong>AI Analysis: มีโอกาสได้รับอนุมัติสูงมาก (95%)</strong><br>
+          การขอคนไอทีเพิ่มและการขออบรมทักษะ สอดคล้องกับนโยบาย "การเปลี่ยนแปลงสู่ดิจิทัล (Digital Transformation)" ของมหาวิทยาลัย
+        </div>
+      </div>
+
+      <table style="width: 100%; text-align: left; border-collapse: collapse;">
+        <thead>
+          <tr style="background-color: #f1f5f9;">
+            <th style="padding: 12px; border-bottom: 2px solid #cbd5e1;">ประเด็นพิจารณา</th>
+            <th style="padding: 12px; border-bottom: 2px solid #cbd5e1;">แผนงานที่เสนอ (กอง IT)</th>
+            <th style="padding: 12px; border-bottom: 2px solid #cbd5e1;">ยุทธศาสตร์มหาวิทยาลัย</th>
+            <th style="padding: 12px; border-bottom: 2px solid #cbd5e1; text-align: center;">ความสอดคล้อง</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">การขออัตรากำลังเพิ่ม</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">ขอตำแหน่ง "นักพัฒนาระบบสารสนเทศ" เพิ่ม 1-2 อัตรา</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">แผนพัฒนาบุคลากรดิจิทัลเพื่อรองรับ Smart University</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;"><span class="badge" style="background-color: var(--success); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.85rem;">สอดคล้องสูงมาก</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">แผนพัฒนาบุคคล (IDP)</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">ส่งบุคลากรอบรม "การพัฒนาระบบสารสนเทศบน Cloud"</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">นโยบายยกระดับทักษะบุคลากร (Reskill/Upskill) สู่สากล</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;"><span class="badge" style="background-color: var(--success); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.85rem;">สอดคล้อง</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">กรอบงบประมาณ</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">ของบประมาณสนับสนุนรวม 15,000 - 20,000 บาท</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">จัดสรรงบประมาณประจำปีเพื่อการพัฒนาสายสนับสนุน</td>
+            <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;"><span class="badge" style="background-color: var(--primary); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.85rem;">อยู่ในเกณฑ์</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   `, 'เปรียบเทียบแผน', 'unit-plan'),
 
