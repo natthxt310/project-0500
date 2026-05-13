@@ -190,24 +190,37 @@ const Router = {
     devMenu.id = 'dev-menu';
     devMenu.className = 'dev-menu';
 
-    const popups = ['hr-14', 'hr-18', 'hr-21', 'hr-33', 'hr-34', 'hr-43', 'dh-09', 'dh-23', 'dh-39', 'dh-50', 'dh-57'];
-    const allRoutes = Object.keys(this.routes).filter(r => r !== 'login' && !popups.includes(r)).sort();
-    let linksHtml = allRoutes.map(r => {
-      const isHR = r.startsWith('hr');
-      return `<div class="dev-link" id="dev-link-${r}" onclick="Router.devNavigate('${r}')">
-        <span>${r.toUpperCase()}</span>
-        <span class="role-badge">${isHR ? 'HR' : 'DH'}</span>
+    // Map existing routes to the new sequential image names
+    const popupsDH = ['dh-09', 'dh-23', 'dh-39', 'dh-50', 'dh-57'];
+    const popupsHR = ['hr-14', 'hr-18', 'hr-21', 'hr-33', 'hr-34', 'hr-43'];
+    
+    // We use the insertion order to map sequentially
+    const dhRoutes = Object.keys(this.routes).filter(r => r.startsWith('dh') && !popupsDH.includes(r));
+    const hrRoutes = Object.keys(this.routes).filter(r => r.startsWith('hr') && !popupsHR.includes(r));
+
+    let linksHtml = '';
+    dhRoutes.forEach((route, index) => {
+      linksHtml += `<div class="dev-link" id="dev-link-${route}" onclick="Router.devNavigate('${route}')">
+        <span>DH - ${index + 1}</span>
+        <span class="role-badge">DH</span>
       </div>`;
-    }).join('');
+    });
+    
+    hrRoutes.forEach((route, index) => {
+      linksHtml += `<div class="dev-link" id="dev-link-${route}" onclick="Router.devNavigate('${route}')">
+        <span>HR - ${index + 1}</span>
+        <span class="role-badge">HR</span>
+      </div>`;
+    });
 
     devMenu.innerHTML = `
       <div class="dev-menu-header">
-        <span>🚀 นำทางหน้าจอ</span>
+        <span>🚀 นำทางหน้าจอ (ตรงกับภาพ)</span>
         <i class="ph ph-x" style="cursor:pointer" onclick="document.getElementById('dev-menu').classList.remove('active')"></i>
       </div>
       <div class="dev-menu-body">
         <div class="dev-link" id="dev-link-login" onclick="Router.devNavigate('login')">
-          <span>LOGIN SCREEN</span>
+          <span>Login / Logout</span>
           <span class="role-badge">ALL</span>
         </div>
         ${linksHtml}
