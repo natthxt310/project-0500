@@ -74,6 +74,23 @@ const PagesHR = {
           </div>
         </div>
       </div>
+      <div class="card">
+        <div class="card-header"><h3 class="card-title">เมนูด่วน (Quick Menu)</h3></div>
+        <div class="grid-3">
+          <button class="btn btn-primary" style="padding:18px;flex-direction:column;gap:8px;height:auto;" onclick="Router.navigate('hr-07')">
+            <i class="ph-fill ph-book-bookmark" style="font-size:1.5rem;"></i>
+            จัดการเกณฑ์มาตรฐาน
+          </button>
+          <button class="btn btn-secondary" style="padding:18px;flex-direction:column;gap:8px;height:auto;" onclick="Router.navigate('hr-28')">
+            <i class="ph-fill ph-file-text" style="font-size:1.5rem;"></i>
+            พิจารณาคำขอแผนงาน
+          </button>
+          <button class="btn btn-outline" style="padding:18px;flex-direction:column;gap:8px;height:auto;border-color:var(--text-muted);color:var(--text);" onclick="Router.navigate('hr-05')">
+            <i class="ph-fill ph-clock-counter-clockwise" style="font-size:1.5rem;"></i>
+            ประวัติการเข้าใช้งาน (Logs)
+          </button>
+        </div>
+      </div>
     `, 'ภาพรวมระบบ — กองบริหารทรัพยากรบุคคล', 'dashboard');
   },
 
